@@ -37,16 +37,16 @@
           <app-login *ngIf="actionName == 'SignIn'" (signInSuccess)="handleLoginSuccess($event)"></app-login>
         </div> -->
         
-<ul class="nav nav-tabs d-flex w-100 justify-content-center align-items-center" id="myTab" role="tablist">
+<ul class="nav nav-tabs d-flex w-100 justify-content-around  align-items-center" id="myTab" role="tablist">
   <div class="row">
     <div class="col-md-6">
   <li class="nav-item" role="presentation">
-    <button class="nav-link  px-5 fw-bold fs-4 border-0" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">signUp</button>
+    <button class="nav-link active   px-5" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><span class="h4">Signup</span> </button>
   </li>
 </div>
 <div class="col-md-6">
   <li class="nav-item" role="presentation" >
-    <button class="nav-link px-5 fw-bold fs-4  border-0 " id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Login</button>
+    <button class="nav-link px-5  " id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><span class="h4">Login</span></button>
   </li>
 </div>
 </div>

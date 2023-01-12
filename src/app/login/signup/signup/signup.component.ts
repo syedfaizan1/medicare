@@ -34,7 +34,7 @@ this.createSignupForm()
     this.signUpForm = this.fb.group({
 
       'userName':['',[Validators.required]],
-      'mobile':['',[Validators.required,Validators.pattern('[0-9]{10}')]],
+      'mobileNo':['',[Validators.required,Validators.pattern('[0-9]{10}')]],
       'password':['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]],
       'isMobileNoVerified':[false,[]]
 
@@ -89,6 +89,8 @@ this.createSignupForm()
         if(response){
              this.isSignUpSuccess = true ;
             console.log(response);
+            this.signUpForm.reset()
+            alert('sign up successful please login')
         }else {
           this.isSignUpSuccess = false;
         }

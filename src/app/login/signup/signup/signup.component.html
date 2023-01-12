@@ -8,7 +8,7 @@
                 <label for="uName" class="form-label">User Name</label>
                 <input type="text" class="form-control" id="uName" aria-describedby="emailHelp" formControlName="userName">
                 <div class="invalid-feedback text-danger d-block"
-      *ngIf="signUpForm.controls['userName'].dirty && signUpForm.controls['username'].errors?.['required']">
+      *ngIf="signUpForm.controls['userName'].dirty && signUpForm.controls['userName'].errors?.['required']">
       <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Username is
         required</i>
     </div>
@@ -17,22 +17,9 @@
             <label for="mobNo" class="form-label">Mobile No</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="" 
-                 formControlName="mobile">
+                 formControlName="mobileNo">
                 <span class="input-group-text bg-body" *ngIf="!isVerifyOtp" id="basic-addon2"><a class="p-1 noDeocoration" (click)="getOtp()">Get Otp</a></span>
-                <span class="input-group-text bg-body" *ngIf="isVerifyOtp"><i class="bi bi-check-circle text-success"></i></span>
-                <div class="invalid-feedback text-danger d-block" *ngIf="signUpForm.controls['mobile'].dirty && signUpForm.controls['mobile'].errors?.['required']">
-                    <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Mobile number is
-                      required</i>
-                  </div>
-
-                  <div
-                  *ngIf="signUpForm.controls['mobile'].dirty && signUpForm.controls['mobile'].errors?.['pattern']; then MobileThenBlock">
-                </div>
-                <ng-template #MobileThenBlock>
-                    <i class="invalid-feedback text-warning d-block "><i class="fa-solid fa-asterisk">&nbsp; </i> Mobile number Must
-                      Contain 10 Digits</i>
-                  </ng-template>
-                  
+                <span class="input-group-text bg-body" *ngIf="isVerifyOtp"><i class="bi bi-check-circle text-success"></i></span>   
             </div>
             <div *ngIf="isGetOtp">
                 <label for="mobNo" class="form-label">OTP</label>
