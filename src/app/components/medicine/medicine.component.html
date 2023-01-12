@@ -1,32 +1,322 @@
-<div class="row bg-primary my-4 py-5">
-    <div class="col-md-12 text-light  py-4 text-center">
-        <h3 class="fs-1">Get Huge Savings on Medicines</h3>
+<div class="row bg-primary my-4 py-5 " id="login-div">
+  <div class="col-md-12 text-light py-4 text-center">
+    <h3 class="fs-1">Get Huge Savings on Medicines</h3>
+  </div>
+  <div class="col-md-12 text-center text-light">
+    <div class="container my-3">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-3 text-center text-light">
+          <i class="fa-solid fa-circle-check"></i
+          ><span> 100 % Genuine Medicines</span>
+        </div>
+        <div class="col-md-2 text-center">
+          <i class="fa-solid fa-circle-check"></i> &nbsp; Trusted Pharmacies
+        </div>
+        <div class="col-md-3">
+          <i class="fa-solid fa-circle-check"></i> &nbsp; Delivery to your
+          doorstep
+        </div>
+        <div class="col-md-2">
+          <i class="fa-solid fa-circle-check"></i> &nbsp; Store Pick up
+        </div>
+      </div>
     </div>
-    <div class="col-md-12 text-center text-light">
-        <div class="container my-3">
- <div class="row d-flex justify-content-center align-items-center">
-    <div class="col-md-3 text-center text-light">
-        <i class="fa-solid fa-circle-check"></i><span> 100 % Genuine Medicines</span> 
-    </div>
-    <div class="col-md-2 text-center">
-        <i class="fa-solid fa-circle-check"></i> &nbsp; Trusted Pharmacies
-    </div>
-    <div class="col-md-3">
-        <i class="fa-solid fa-circle-check"></i> &nbsp; Delivery to your doorstep
-    </div>
-    <div class="col-md-2">
-        <i class="fa-solid fa-circle-check"></i> &nbsp; Store Pick up
-    </div>
- </div>
+  </div>
 </div>
-    </div>
-</div>
-
 <div class="container">
-    <div class="input-group p-3 shadow rounded-5 input-box" >
-        <span class="input-group-text bg-body text-primary border-0"> Select City &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span>
-        <input type="text" aria-label="Search Medicine" class="form-control  search border-0" autofocus>
-        <span class="input-group-text bg-body text-primary border-0"><i class="fa-solid fa-magnifying-glass"></i> &nbsp; &nbsp; Search
-        </span>
-      </div> 
+  <div class="container">
+    <div class="input-group p-3 shadow rounded-3 input-box">
+      <span *ngIf="!isPinCodeAvailable">Select Location </span>
+      <span
+        class="input-group-text bg-body text-primary border-0"
+        *ngIf="isPinCodeAvailable"
+      >
+        {{ pincodeDetails.pincodeCity }} &nbsp;{{
+          pincodeDetails.pincode
+        }}</span
+      >
+      &nbsp;
+      <span class="cursor" data-bs-toggle="modal" data-bs-target="#pincodemodal"
+        ><i class="fa-solid fa-angle-down"></i
+      ></span>
+
+      <input
+        type="text"
+        aria-label="Search Medicine"
+        placeholder="Search Medicine"
+        class="form-control search border-0"
+        name="searchText"
+        [(ngModel)]="SearchTextEnterd"
+        autofocus
+        (input)="OnSearchEnter()"
+      />
+      <span class="input-group-text bg-body text-primary border-0"
+        ><i class="fa-solid fa-magnifying-glass"></i> &nbsp; &nbsp; Search
+      </span>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <app-top-deals [searchTextRecived]="SearchTextEnterd" ></app-top-deals>
+  </div>
+
+  <div
+
+  
+    class="container d-flex justify-content-center align-content-center my-5"
+  >
+    <img
+      src="https://www.medibuddy.in/assets/banners/medicine-page.webp"
+      alt="image"
+    />
+  </div>
+
+  
+
+  <div class="container my-5 p-4 bg-body">
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+              <img
+                src="https://www.medibuddy.in/assets/banners/otcStore.webp"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-6">
+              <img
+                src="https://www.medibuddy.in/assets/offers/CallOffer.png"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row d-flex justify-content-around">
+            <div class="col-md-6">
+              <img
+                src="https://www.medibuddy.in/assets/offers/CallOffer.png"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-6">
+              <img
+                src="https://www.medibuddy.in/assets/offers/discount-home-delivered.png"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon bg-dark"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon bg-dark"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  
+
+    <div class="container my-5">
+      <p class="h1 fw-800 text-center text-primary my-5">
+        Order Medicines through Prescription
+      </p>
+      <div class="row">
+        <div class="col-md-6">
+          <div
+            class="card mb-3 border-0 rounded-4 p-5 shadow-lg"
+            style="max-width: 560px"
+          >
+            <div class="row g-0">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title mb-4" >
+                    Upload Prescription to place order
+                  </h5>
+                  <p class="card-text">
+                    Upload only .jpg .png or .pdf files, size limit is 15 MB
+                  </p>
+                  <button class="btn btn-primary rounded-3 pt-3" routerLink="/gold-membership">
+                    Order via Prescription &nbsp; &nbsp; &nbsp;
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <img
+                  src="https://www.medibuddy.in/assets/icons/medicine/rx.svg"
+                  class="img-fluid rounded-start"
+                  width="100"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div
+            class="card mb-3 border-0 rounded-4 p-5 shadow-lg"
+            style="max-width: 560px"
+          >
+            <div class="row g-0">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">
+                    Don't have a Prescription? No Worry..
+                  </h5>
+                  <p class="card-text">
+                    Consult Top Doctors Online and order medicines through valid
+                    prescriptions
+                  </p>
+                  <button class="btn btn-primary rounded-3 pt-3" routerLink="/talk-to-doctor">
+                    Start Consultation &nbsp; &nbsp; &nbsp;
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <img
+                  src="https://www.medibuddy.in/assets/icons/services/med-consultation.svg"
+                  class="img-fluid rounded-start"
+                  width="150"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="h1 fw-800 text-primary my-5">Your Cart</p>
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="row ms-5">
+          <div class="col-md-12 m-5 ps-3">
+            <img
+              src="https://www.medibuddy.in/assets/icons/user-login.svg"
+              alt=""
+              width="200"
+            />
+          </div>
+          <div class="col-md-12 d-flex align-content-center mx-0 my-3">
+            <p class="text-center h3">
+              <a class="display-6 text-primary text-decoration-none" (click)="onClick('login-div')"
+                >login &nbsp;
+              </a>
+              to see your Cart
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <div class="card text-bg-body border-0 shadow-sm">
+        <img
+          src="https://www.medibuddy.in/assets/banners/app-banner.webp"
+          class="card-img"
+          alt="..."
+        />
+        <div class="card-img-overlay">
+          <div class="row button-row my-4">
+            <div class="col-md-3">
+              <button type="button" class="btn btn-dark btn-lg">
+                <i class="bi fa-2x bi-google-play"></i>&nbsp; Google play
+              </button>
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-dark btn-lg">
+                <i class="bi fa-2x bi-apple"></i>&nbsp; App store
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div
+      class="container d-flex w-100 h-100 justify-content-center align-content-center modal-con"
+    >
+      <div
+        class="modal fade"
+        id="pincodemodal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Set Your Location
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group shadow-sm">
+                <input
+                  type="text"
+                  class="form-control border-0 search"
+                  name="pincode"
+                  minlength="6"
+                  maxlength=""
+                  [(ngModel)]="pincode"
+                  (ngModelChange)="getPackageDetailsByPincode()"
+                  #pincodeInput="ngModel"
+                />
+
+                <span
+                  class="input-group-text text-success bg-body border-0"
+                  *ngIf="isPinCodeAvailable && pincode != ''"
+                  ><i class="fa fa-check-circle"></i>
+                </span>
+                <div
+                  id="validationServer03Feedback"
+                  class="invalid-feedback d-block"
+                  *ngIf="!isPinCodeAvailable && pincode != ''"
+                >
+                  sorry!! currently We do not provide services at this pn code
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal -->
+  </div>
 </div>

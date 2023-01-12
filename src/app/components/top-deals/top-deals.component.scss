@@ -1,0 +1,22 @@
+.buy-btn{
+    width: 40rem !important;
+    height: 40rem !important;
+display: flex !important;
+align-items: flex-start !important;
+align-self: center !important;
+}
+
+.card-discription{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-block{
+    box-shadow: 0 0 10ppx rgb(24 24 24 / 16%);
+    border-radius: 20px;
+    margin: 0;
+overflow: hidden;
+}

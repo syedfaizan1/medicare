@@ -1,0 +1,37 @@
+<button class="btn  ms-5 text-center btn-warning col-md-2  my-4 shadow" routerLink="/medicine">back</button>
+
+<div class="deal-container  d-flex justify-content-center align-items-center">
+    <div class="contanier deal  w-75 ">
+    
+        <div class="row d-flex justify-content-between  mx-5">
+            <div class="col-md-4 my-5">
+              <img [src]="drugObj.productImageSlug[0]" alt="" style="width: 318px;height: fit-content" >
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group my-5 p-2 ">
+                    <li class=" list-unstyled h1 my-3 mx-2">
+                     {{drugObj.genericDosage}}
+                    </li>
+                    <li class=" list-unstyled  h4 mb-5 mt-2 mx-2">
+                     {{drugObj.discountPrice |currency :'INR'}}/-*
+                    </li>
+                    <li class=" list-unstyled text-muted fs-4  mx-2">
+                     {{drugObj.brand}}
+                    </li>
+                    <li class="list-unstyled text-muted fs-4 mx-2">
+                     {{drugObj.drugForm}}
+                    </li>
+                   
+                    <li class="list-unstyled text-muted fs-4 mx-2">
+                        {{drugObj.medicineCategory}}
+                    </li>
+                    <li class="list-unstyled text-muted fs-4 mx-2">
+                        {{drugObj.composition ? drugObj.composition : ''}}
+                       </li>
+                       <button class="btn btn-success my-4" (click)="addToCart(drugObj)">add</button>
+                </ul>
+            </div>
+        </div>
+    
+    </div>
+</div>

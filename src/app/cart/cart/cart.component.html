@@ -1,0 +1,56 @@
+<button class="btn back btn-warning   my-4 shadow" routerLink="/medicine">back</button>
+<div class="container mt-3 mb-4">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div class="col-md-7 py-4 border rounded-4">
+            <strong class="ms-2 text-primary" *ngIf="orderObj.products.length !== 0">Cart Items</strong> <span 
+            *ngIf="orderObj.products.length !== 0" class="ms-2 text-muted">{{orderObj.products.length}} Items</span>
+            <strong class="ms-2 text-primary" *ngIf="orderObj.products.length==0">Kart is Empty</strong>
+            <div class="card mt-2 py-3 shadow"  *ngFor="let product of orderObj.products ;let i=index" >
+                <div class="card-body row">
+                    <div class="col-md-7">
+                        <h6 class="card-text">{{product.description}}</h6>
+                        <p class="card-text text-muted">{{product.brand}}</p>
+                        <p class="card-text text-muted">{{product.type}}</p>
+
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <p class="card-text text-muted">  {{product.discountPrice}} &nbsp;
+                             <span class="text-decoration-line-through">MRP {{product.actualPrice}}</span></p>
+
+                             <p><i class="bi bi-dash-circle text-primary cursor" (click)="changeQty('decrease',i)"></i> &nbsp;{{product.quantity}}&nbsp;<i class="bi bi-plus-circle text-primary cursor" (click)="changeQty('increase',i)"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 py-4 ms-2 border rounded-4 shadow payment-div">
+            <div class="card">
+                <div class="card-body">
+                    <strong class="ms-2">Payment Details</strong>
+                    <hr class="mt-2 ms-2 text-primary">
+
+                    <div class="row">
+                        <div class="col-md-6 ms-2" >
+                            <p class="card-text fw-bold"> MRP total</p>
+                            <p class="card-text fw-bold"> Med Discount</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <p class="fs-6 fw-bold"> {{orderObj.totalAmount}}/-*</p>
+                            <p class="fs-6  fw-bold text-muted text-success"> {{orderObj.totalDiscount | number:'1.0-0' }}/-*</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <hr class="text-primary">
+                          <div class="col-md-6">
+                            <p class="text-muted">Amount to pay</p>
+                            <p class="fw-bold">{{orderObj.finalAmount}}/-*</p>
+                          </div>
+                          <div class="col-md-6 ">
+                            <button class="btn  col-12 w-100 btn-primary"(click)="checkout()">Checkout</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

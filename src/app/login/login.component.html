@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="alert alert-danger" role="alert" *ngIf="isNewUser">
+     Please Check The credantials or Sign up first
+    </div>
+    <div class="row">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="mb-3">
+            <label for="mobNo" class="form-label">Mobile No</label>
+            <input type="text" class="form-control" id="mobNo" aria-describedby="emailHelp" formControlName="mobile">
+            <div class="invalid-feedback text-danger d-block" *ngIf="loginForm?.controls['mobile']?.dirty && loginForm.controls['mobile'].errors?.['required']">
+              <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Mobile number is
+                required</i>
+            </div>
+            
+        
+            <ng-container *ngIf="
+                loginForm?.controls['mobile']?.dirty &&
+                loginForm?.controls['mobile']?.value !== ''
+              ">
+              <div
+                *ngIf="loginForm.controls['mobile']?.dirty && loginForm.controls['mobile'].errors?.['pattern']; then MobileThenBlock; else MobileElseBlock">
+              </div>
+        
+              <ng-template #MobileThenBlock>
+                <i class="invalid-feedback text-warning d-block "><i class="fa-solid fa-asterisk">&nbsp; </i> Mobile number Must
+                  Contain 10 Digits</i>
+              </ng-template>
+        
+              <ng-template #MobileElseBlock>
+                <i class="valid-feedback d-block" >
+                  <div ><i class="fa-regular fa-circle-check d-inline"> &nbsp;</i>Mobile number is
+                    valid</div></i>
+              </ng-template>
+            </ng-container>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword" formControlName="password">
+            <div class="invalid-feedback text-danger d-block"
+            *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['required']">
+            <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Password is
+              required</i>
+          </div>
+          <ng-container *ngIf="
+              loginForm.controls['password'].dirty &&
+              loginForm.controls['password'].value !== ''
+            ">
+            <div
+              *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['pattern'] ; then PasswordThenBlock; else PasswordElseBlock">
+            </div>
+      
+            <ng-template #PasswordThenBlock>
+              <i class="text-color d-block"><i class="fa-solid fa-asterisk">&nbsp; </i> Password Must Contain
+                atleast 1 uppercase,1 lowercase,1 number,1 special character and
+                atleast 8 characters.</i>
+            </ng-template>
+      
+            <ng-template #PasswordElseBlock>
+              <i class="valid-feedback d-block">
+                <i class="fa-regular fa-circle-check"> &nbsp;</i>Password is valid</i>
+            </ng-template>
+          </ng-container>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid" >Login</button>
+            <!-- <button class="btn btn-primary" type="button">Button</button> -->
+          </div>
+        </form>
+    </div>
+  </div>

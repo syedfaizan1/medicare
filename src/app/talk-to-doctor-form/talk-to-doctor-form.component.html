@@ -1,0 +1,56 @@
+<div class="img-con container d-flex justify-content-center align-content-center my-4">
+    <img src="../../assets/images/talk-to doctor 2.png" alt="" width="100%" >
+</div>
+
+<div class="request-form shadow bg-light d-flex justify-content-center  my-5 p-5">
+    <form  [formGroup]="callForm" class="form-group w-50" (ngSubmit)="RequestCall()">
+        <label classs="form-label my-3" for="patientType">Who is the Patient?</label>
+<div>
+        <select  class="form-control  my-3" formControlName="patientType">
+            <option [ngValue]="null" disabled>Choose...</option>
+            <option  [ngValue]="'Self'">Self</option>
+            <option  [ngValue]="'Other'">Other</option>
+          </select>
+        </div>
+        <div>
+        <label  classs="form-label  my-3" for="relationship">relationship with the patient <span class="text-muted text-primary">(if  selected "Other")</span></label>
+        <input class="form-control  my-3" formControlName="relationship" type="text" name="relationship" id="relationship">
+    </div> 
+    <div>
+        <label classs="form-label  my-3" for="Pname">Name Of the patient</label>
+        <input  class="form-control my-3" formControlName="Pname" type="text" name="Pname" id="Pname">
+    </div>
+    <div>
+        <label classs="form-label  my-3" for="age">Age Of the patient</label>
+        <input  class="form-control my-3" formControlName="age" type="number" name="age" id="age">
+    </div>
+            <div>
+
+        <label classs="form-label my-3" for="patientType">Gender of the patient</label>
+
+        <select  class="form-control  my-3" formControlName="gender">
+            <option [ngValue]="null" disabled>Choose gender</option>
+            <option  [ngValue]="'male'">male</option>
+            <option  [ngValue]="'female'">female</option>
+            <option  [ngValue]="'Other'">Other</option>
+          </select> 
+        </div>
+        <div>
+            <label classs="form-label my-3" for="symptom">Tell us the symptom that's bothering you most?</label>
+            <textarea name="symptom" class="form-text form-control" id="symptom" formControlName="symptom" cols="30" rows="5" maxlength="500" placeholder="Tell us the symptom that's bothering you most?"></textarea>
+        </div>
+        <div>
+        <label classs="form-label  my-3" for="mobileNo">Mobile number to Request Call</label>
+        <input  class="form-control my-3" formControlName="mobileNo" type="number" name="mobileNo" id="mobileNo">
+    </div>
+        <button type="submit" class="btn btn-primary my-3" [disabled]="callForm.invalid">Request a Call From Doctor</button>
+        <div class="alert alert-success" role="alert" *ngIf="requsetflg ===true">
+            Your request is submitted you will shortly recive  a cal from our specialist
+          </div>
+
+    </form>
+
+   
+
+</div>
+

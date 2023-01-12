@@ -1,0 +1,35 @@
+
+<div class="container my-4 p-4">
+    <div><h4>Top Deals</h4> Search: {{searchTextRecived}}</div>
+<owl-carousel-o [options]="customOptions">
+
+  <ng-container *ngFor="let deal of topDeals">
+    <ng-template carouselSlide [id]="deal.id" *ngIf="searchTextRecived===''||deal.description?.toLowerCase().includes(searchTextRecived)"  >
+        <div class="card  card-block" style="width:280px"  >
+            <img [src]="deal.productImageSlug[0]" [alt]="deal.alt" [title]="deal.title" height="200px"  [routerLink]="['/view/',deal.drugCode]" >
+            <div class="card-body shadow-lg ">
+              <h5 class="card-title  card-discription">{{deal.medicineName ? deal.medicineName : deal.description }}</h5>
+              <p class="card-text card-discription" >{{   deal.description}}</p>
+              <p class="card-text text-muted">{{deal.type}}</p>
+              <div class="row mt-3 p-3">
+                <div class="col-md-6">
+                  <span class="card-text text-muted">MRP</span><br>
+                     <b >{{deal.actualPrice | currency : 'INR'}} </b>
+                </div>
+                <div class="col-md-6">
+                    <a  class="btn btn-light  btn-sm rounded-pil  btn-outline-primary  d-block "  (click)=" addToCart(deal)">add</a>
+                  
+
+                </div>
+              </div>
+            </div>
+          </div> 
+     
+    </ng-template>
+  </ng-container>
+
+</owl-carousel-o>
+<div><h4 class="text-primary"routerLink="/view-top-details-by-category">View All</h4></div>
+
+</div>
+

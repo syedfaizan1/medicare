@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="alert alert-danger" role="alert" *ngIf="!isVerifyOtp && signUpForm.valid">
+         Mobile Verification is Mandatory
+      </div>
+    <div class="row">
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <div class="mb-3">
+                <label for="uName" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="uName" aria-describedby="emailHelp" formControlName="userName">
+                <div class="invalid-feedback text-danger d-block"
+      *ngIf="signUpForm.controls['userName'].dirty && signUpForm.controls['username'].errors?.['required']">
+      <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Username is
+        required</i>
+    </div>
+
+            </div>
+            <label for="mobNo" class="form-label">Mobile No</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="" 
+                 formControlName="mobile">
+                <span class="input-group-text bg-body" *ngIf="!isVerifyOtp" id="basic-addon2"><a class="p-1 noDeocoration" (click)="getOtp()">Get Otp</a></span>
+                <span class="input-group-text bg-body" *ngIf="isVerifyOtp"><i class="bi bi-check-circle text-success"></i></span>
+                <div class="invalid-feedback text-danger d-block" *ngIf="signUpForm.controls['mobile'].dirty && signUpForm.controls['mobile'].errors?.['required']">
+                    <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Mobile number is
+                      required</i>
+                  </div>
+
+                  <div
+                  *ngIf="signUpForm.controls['mobile'].dirty && signUpForm.controls['mobile'].errors?.['pattern']; then MobileThenBlock">
+                </div>
+                <ng-template #MobileThenBlock>
+                    <i class="invalid-feedback text-warning d-block "><i class="fa-solid fa-asterisk">&nbsp; </i> Mobile number Must
+                      Contain 10 Digits</i>
+                  </ng-template>
+                  
+            </div>
+            <div *ngIf="isGetOtp">
+                <label for="mobNo" class="form-label">OTP</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="" #otp>
+                    <span class="input-group-text bg-body" id="basic-addon2"><a class="p-1 noDeocoration" (click)="verifyOtp(otp.value)">Verify Otp</a></span>
+                </div>
+                <div class="text-danger" *ngIf="!otpMessage" >Otp is Valid for {{otpTimer}}</div>
+                <div class="text-danger" *ngIf="otpMessage" >Please try getting otp Again <a  (click)="getOtpOnResend()" class="text-primary">resend Otp</a> </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+
+                <div class="invalid-feedback text-danger d-block"
+                *ngIf="signUpForm.controls['password'].dirty && signUpForm.controls['password'].errors?.['required']">
+                <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Password is
+                  required</i>
+              </div>
+              <ng-container *ngIf="
+                  signUpForm.controls['password'].dirty &&
+                  signUpForm.controls['password'].value !== ''
+                ">
+                <div
+                  *ngIf="signUpForm.controls['password'].dirty && signUpForm.controls['password'].errors?.['pattern'] ; then PasswordThenBlock; else PasswordElseBlock">
+                </div>
+          
+                <ng-template #PasswordThenBlock>
+                  <i class="text-color d-block"><i class="fa-solid fa-asterisk">&nbsp; </i> Password Must Contain
+                    atleast 1 uppercase,1 lowercase,1 number,1 special character and
+                    atleast 8 characters.</i>
+                </ng-template>
+          
+                <ng-template #PasswordElseBlock>
+                  <i class="valid-feedback d-block">
+                    <i class="fa-regular fa-circle-check"> &nbsp;</i>Password is valid</i>
+                </ng-template>
+              </ng-container>
+              </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">I Agree to the *terms & conditions</label>
+            </div>
+            <button type="submit" class="btn btn-primary"  [disabled]="!(signUpForm.valid && isVerifyOtp && !isSignUpSuccess)">Submit</button>
+        </form>
+    </div>
+</div>

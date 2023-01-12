@@ -4,5 +4,28 @@
     background-color: white;
 }
 .search{
-    border-bottom:1px solid lightgray !important ;
+   border-left: 1px solid lightgray !important;
+   border-right: 1px solid lightgray !important;
 }
+.carousel-control-prev-icon{
+    position: relative ;
+    left: -5rem;
+
+
+}
+.carousel-control-next-icon{
+    position: relative;
+    right: -5rem;
+}
+
+.button-row{
+    position: relative;
+    top: 277px;
+    left: 38px;
+    }
+   
+    .modal-dialog{
+        z-index: 9998;
+        position: relative;
+        top:50%
+    }

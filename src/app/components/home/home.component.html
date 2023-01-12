@@ -1,13 +1,17 @@
 <!-- catogary> -->
+<div class="alert alert-info my-3 w-50 text-center" *ngIf="disabledflg== true">
+  this Section is under development it will be avaiable soon. &nbsp;&nbsp;
+  <i class=" fa fa-multiply"    (click)="closeAlert()"></i>
+  </div>
 
-<div class="container my-5 p-5 w-75  d-flex justify-content-center align-items-center">
-    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
-        <div class=" d-flex justify-content-between  align-items-center ">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-75  d-flex justify-content-between ">
-                <li class="nav-item">
-                    <a class="nav-link active px-5" aria-current="page" href="#"><img
+<div class="d-flex justify-content-around my-5 py-4">
+ 
+        <div class=" d-flex align-items-center flex-wrap ">
+            <ul class=" list-unstyled me-auto mb-2 mb-lg-0   d-flex justify-content-center  flex-wrap ">
+                <li class="nav-item" >
+                    <a class="nav-link active px-5" aria-current="page" routerLink="/talk-to-doctor"><img
                             src="../../../assets/images/doctor-icon.png" alt="" width="75" height="75" >
-                        <h6 class="py-2 ms-2">Talk to Doctor</h6>
+                        <h6 class="py-2 ms-2" >Talk to Doctor</h6>
     
                     </a>
                 </li>
@@ -18,38 +22,38 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-5" href="#"><img src="../../../assets/images/surgery.png" alt="" width="75"
+                  <a class="nav-link px-5"  routerLink="/gold-membership"><img src="https://media.licdn.com/dms/image/C4D0BAQHdo-YRhVC3KQ/company-logo_200_200/0/1582500992251?e=2147483647&v=beta&t=LATdKxoVlvN91fRI1wOVQLae1WfO3gj8eWmNDxPK9Jo" alt="" width="75"
+                          height="75">
+                      <h6  class="py-2 ms-2">MediCare Gold</h6>
+                  </a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link px-5" (click)="onDisableClick()" ><img src="../../../assets/images/lab_test and surgery.png" alt="" width="75"
                             height="75">
-                        <h6  class="py-2 ms-2">Surgery</h6>
+                        <h6  class="py-2 ms-2"> LAb Test & Surgery</h6>
                     </a>
                 </li>
+                
                 <li class="nav-item">
-                    <a class="nav-link px-5" href="#"><img src="../../../assets/images/insurance.png" alt="" width="75"
+                    <a class="nav-link px-5" (click)="onClick('Insurance-div')"><img src="../../../assets/images/insurance.png" alt="" width="75"
                             height="75">
                         <h6  class="py-2 ms-2">Insurance</h6>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-5" href="#"><img src="../../../assets/images/lab.png" alt="" width="75" height="75">
-                        <h6  class="py-2 ms-2">Lab tests</h6>
-                    </a>
-                </li>
-    
-    
             </ul>
         </div>
-    </nav>
+  
 </div>
 
-<div class="container d-flex justify-content-center align-items-center my-5 p-5 ">
-    <div class="row w-75 rounded-pill shadow  py-5 px-3 my-3 ">
+<div class="container consult-div d-flex justify-content-center align-items-center my-5 p-5 ">
+    <div class="row w-75 rounded-pill shadow   d-flex justify-content-between align-items-center  py-2 px-3 my-3 ">
         <div class="col-md-6 text-center ">
     <h4>
         Consult with Top Doctors Online, 24x7
     </h4>
         </div>
-        <div class="col-md-5 text-center text-primary border rounded-pill py-2 ">
-<h4 class=" "> Start Consultation &nbsp; &nbsp; &nbsp; <i class="bi fa-2x bi-arrow-right"></i></h4>
+        <div class="col-md-5 consult-link text-center text-primary border rounded-pill py-1" routerLink="/talk-to-doctor/request-call">
+<h4 class=" "> Start Consultation &nbsp; &nbsp; &nbsp; <i class="bi  bi-arrow-right"></i></h4>
         </div>
     </div>
 </div>
@@ -83,21 +87,21 @@
 </div>
 <!-- image -->
 
-<div class="container my-5 py-5">
-    <img src="https://www.medibuddy.in/assets/ABHA.svg" alt="">
+<div class="container my-5">
+   <a href="https://healthid.ndhm.gov.in/register"> <img src="https://www.medibuddy.in/assets/ABHA.svg" alt="" width="100%" href=""></a>
 </div>
 
 
 
 <!-- video  and texts -->
  
-<div class=" container-fluid m-5  p-5 justify-content-center align-content-center bg-light">
+<div class=" container my-5  p-5 justify-content-center align-content-center bg-light">
     <div class="row">
       <!-- texts and google play -->
       <div class="col-md-6">
         <div class="row">
           <div class="col-12 my-4">
-  <b class="font-bold">MedLab is a place where you get comprehensive medical assistance to help you stay healthy while booking your appointments with doctors, specialist and ordering laboratory tests online.</b>
+  <b class="font-bold">MediCare is a place where you get comprehensive medical assistance to help you stay healthy while booking your appointments with doctors, specialist and ordering laboratory tests online.</b>
           </div>
           <h2 class="text-center text-success my-3">Download App From</h2>
           <div class="col-12">
@@ -122,20 +126,25 @@
   </div>
 
   <!-- insurance cards -->
-
+<div class="container" id='Insurance-div'>
+  
   <div class=" text-left text-bold m-5">
     <h2 class="my-3 ">Insurance</h2>
     <b class="text-start my-4 ">Get access to all your Health insurance services - View Policy, Initiate and Track Claims, Go Cashless with network hospitals and intimate Hospitalization</b>
 <br><br>
 <div class="card-con">
-    <div class="row"  >
-        <div class="col-md-3  " *ngFor="let insurance of insuranceArr"> 
-            <div class="card card-ins shadow-lg border-1 rounded-5" style="width: 18rem; ">
+    <div class=" row d-flex justify-content-between flex-row flex-wrap"  >
+        <div class="col-md-3 my-3" *ngFor="let insurance of insuranceArr;let i = index"> 
+            <div class="card card-ins shadow border-1 p-3 my-3  rounded-5" style="width: 14rem; height:20rem;" >
                 <div class="card-body">
-                    <h5 class="card-title d-flex justify-content-between">{{insurance.heading}}  <i class="bi fa-2x bi-arrow-right"></i></h5>
-                  <p class="card-text"> {{insurance.body}}</p>
+                    <h6 class="card-title d-flex justify-content-between"><a class="text-decoration-none text-primary" target="_blank" href="{{insurance.link}}"> {{insurance.heading}} &nbsp;<i class="bi fa-2x bi-arrow-right"></i> </a></h6>
+                  <p class="card-text p-2 m-2">{{insurance.body}}</p>
                 </div>
-                <img [src]="insurance.img" class="card-img-top" alt="..." width="75">
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-6 p-4 mb-2 mx-2 "> <img [src]="insurance.img" class="card-img-top" [alt]="'insurance+img'+ (i+1)"></div>
+              </div>
+               
               </div>
 </div>
 </div>
@@ -143,6 +152,7 @@
 </div>
 
   </div>
+</div>
 
   
 

@@ -1,0 +1,27 @@
+.talk-to-doctor-header{
+    margin-right: 10px;
+    margin-left: 10px;
+    background-image: url(../../assets/images/bg_talk-to-doctor.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+.header-text{
+    width: 40%;
+    font-size: 3rem;
+    
+
+}
+}
+
+.reviews{
+    border:1px solid black;
+    width:100%;
+    height: 50%;
+    overflow-y:hidden;
+    overflow-x:scroll;
+    border: none !important;
+    .review-row{
+        margin-left: 14rem;
+    }
+}
+
+
