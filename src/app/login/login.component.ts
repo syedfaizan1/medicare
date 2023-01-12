@@ -24,14 +24,14 @@ export class LoginComponent implements OnInit {
  
    createForm(){
      this.loginForm = this.fb.group({
-       'mobile':['',[Validators.required, Validators.pattern('[0-9]{10}')]],
+       'mobileNo':['',[Validators.required, Validators.pattern('[0-9]{10}')]],
        'password':['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]]
      })
    }
  
    login() {
      const params: HttpParams = new HttpParams()
-       .set('mobile', this.loginForm.controls['mobile'].value)
+       .set('mobileNo', this.loginForm.controls['mobileNo'].value)
        .set('password', this.loginForm.controls['password'].value)
  
     this.http.getDetailsFromServer('users',params).subscribe((response:any)=>{
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
          var user = response[0];
          let token = "FGHgffgg123gjjhg";
          user['authToken'] = token ; 
-         localStorage.setItem('mobile',this.loginForm.controls['mobile'].value)
+         localStorage.setItem('mobileNo',this.loginForm.controls['mobileNo'].value)
          localStorage.setItem('authToken',token);
          localStorage.setItem('user',JSON.stringify(user));
          this.isNewUser = false;
@@ -49,6 +49,11 @@ export class LoginComponent implements OnInit {
      }
     })
  
-   } 
+   }
+
+   closealert(){
+    this.isNewUser=false
+   }
+
 
 }

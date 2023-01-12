@@ -46,7 +46,7 @@ this.createSignupForm()
     this.isGetOtp = true ;
     //generated 4 digit random number
     this.otpGenerated = Math.floor(1000 + Math.random() * 9000);
-    console.log(this.otpGenerated);
+    alert(this.otpGenerated);
     
     this.timer()
 

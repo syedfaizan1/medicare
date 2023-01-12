@@ -1,24 +1,24 @@
 <div class="container">
     <div class="alert alert-danger" role="alert" *ngIf="isNewUser">
-     Please Check The credantials or Sign up first
+     Please Check The credantials or Sign up first <button (click)="closealert()">okay</button>
     </div>
     <div class="row">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="mobNo" class="form-label">Mobile No</label>
-            <input type="text" class="form-control" id="mobNo" aria-describedby="emailHelp" formControlName="mobile">
-            <div class="invalid-feedback text-danger d-block" *ngIf="loginForm?.controls['mobile']?.dirty && loginForm.controls['mobile'].errors?.['required']">
+            <input type="text" class="form-control" id="mobNo" aria-describedby="emailHelp" formControlName="mobileNo">
+            <div class="invalid-feedback text-danger d-block" *ngIf="loginForm?.controls['mobileNo']?.dirty && loginForm.controls['mobileNo'].errors?.['required']">
               <i><i class="fa-solid fa-triangle-exclamation"> &nbsp;</i>Mobile number is
                 required</i>
             </div>
             
         
             <ng-container *ngIf="
-                loginForm?.controls['mobile']?.dirty &&
-                loginForm?.controls['mobile']?.value !== ''
+                loginForm?.controls['mobileNo']?.dirty &&
+                loginForm?.controls['mobileNo']?.value !== ''
               ">
               <div
-                *ngIf="loginForm.controls['mobile']?.dirty && loginForm.controls['mobile'].errors?.['pattern']; then MobileThenBlock; else MobileElseBlock">
+                *ngIf="loginForm.controls['mobileNo']?.dirty && loginForm.controls['mobileNo'].errors?.['pattern']; then MobileThenBlock; else MobileElseBlock">
               </div>
         
               <ng-template #MobileThenBlock>

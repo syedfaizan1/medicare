@@ -5,7 +5,8 @@ import { EventEmitter, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HttpService {
-baseUrl:string=' http://localhost:3000/'
+// baseUrl:string=' http://localhost:3000/'
+baseUrl:string='https://guiltless-trite-paneer.glitch.me/'
 
 httpHeaders:HttpHeaders =new HttpHeaders().set('content-type','application/json');
   constructor(private http:HttpClient) { }
