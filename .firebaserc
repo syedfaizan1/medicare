@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "medicare564": {
+      "hosting": {
+        "MediCare": [
+          "medicare564"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "medicare564"
+  }
+}
